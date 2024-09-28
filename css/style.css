@@ -1,35 +1,72 @@
-html{
+html {
     scroll-behavior: smooth;
 }
+
 body {
     background-color: #dedede;
     padding: 5px;
     margin: 15px;
     font-size: 25px;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 h1 {
     text-align: center;
-    font-family:Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1.95em;
 }
 
-h2{
-    text-align:center;
-  }
-
-li{
-    margin-top: 20px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
 }
 
-img{
+figure {
     border: 5px solid blue;
-    border-radius: 35px;
-    width: 100%;
-  }
+    overflow: hidden; /* Asegura que la imagen se ajuste dentro del borde */
+}
 
-.label{
-    text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+img {
+    width: 100%;
+    display: block; /* Elimina el espacio en línea en la parte inferior de las imágenes */
+}
+
+/* Estilos para vista de tabletas */
+@media (min-width: 772px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    figure {
+        border-radius: 50%; /* Crea una forma circular en tabletas */
+    }
+    figure:last-of-type {
+        grid-column: span 2; /* Hace que el último figure ocupe ambas columnas */
+    }
+}
+
+/* Estilos para vista grande */
+@media (min-width: 992px) {
+    figure:nth-of-type(3n) {
+        grid-column: span 2; /* Cada tercer figure ocupa ambas columnas */
+    }
+    figure {
+        border-radius: 0; /* Elimina el borde redondeado en pantallas grandes */
+    }
+}
+
+/* Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto; /* Elimina el comportamiento de desplazamiento suave */
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    figure {
+        background-color: #333; /* Cambia el color de fondo a oscuro */
+        color: #f0e68c; /* Cambia el color de fuente a un color más claro */
+        border-color: black; /* Cambia el color del borde a negro */
+    }
 }
